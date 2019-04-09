@@ -83,7 +83,7 @@ class DataFrameQuerySet(QuerySet):
 
     def to_pivot_table(self, fieldnames=(), verbose=True,
                        values=None, rows=None, cols=None,
-                       aggfunc='mean', fill_value=None, margins=False,
+                       aggfunc='mean', fill_value=None, margins=False,margins_name='All',
                        dropna=True, coerce_float=True):
         """
         A convenience method for creating a spread sheet style pivot table
@@ -130,7 +130,7 @@ class DataFrameQuerySet(QuerySet):
 
         return df.pivot_table(values=values, fill_value=fill_value, index=rows,
                               columns=cols, aggfunc=aggfunc, margins=margins,
-                              dropna=dropna)
+                              dropna=dropna,margins_name=margins_name)
 
     def to_timeseries(self, fieldnames=(), verbose=True,
                       index=None, storage='wide',
